@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -11,6 +12,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private Job list;
 
     // TODO: add two constructors - one to initialize a unique ID and a second to initialize the other five fields. The second constructor should also call the first in order to initialize the 'id' field
     public Job() {
@@ -31,7 +33,7 @@ public class Job {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash( id );
     }
 
     @Override
@@ -42,8 +44,32 @@ public class Job {
         return id == job.id;
     }
 
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID and id.
+    @Override
+    public String toString() {
+        if (this.name == "") {
+            this.name = "Data Not Available";
+        }
+        if (this.employer.getValue() == "") {
+            this.employer.setValue( "Data Not Available" );
+        }
+        if (this.location.getValue() == "") {
+            this.location.setValue( "Data Not Available" );
+        }
+        if (this.positionType.getValue() == "") {
+            this.positionType.setValue( "Data Not Available" );
+        }
+        if (this.coreCompetency.getValue() == "") {
+            this.coreCompetency.setValue( "Data Not Available" );
+        }
+        return "\n" +
+                "ID: " + this.id + "\n" +
+                "Name: " + this.name + "\n" +
+                "Employer: " + this.employer + "\n" +
+                "Location: " + this.location + "\n" +
+                "Position Type: " + this.positionType + "\n" +
+                "Core Competency: " + this.coreCompetency + "\n";
+    }
+// TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID and id.
 
 
     public int getId() {
